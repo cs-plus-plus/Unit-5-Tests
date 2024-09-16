@@ -50,8 +50,8 @@ Students are required to complete the `Unit5.java` class by implementing all the
 ## Getting Started
 1. Clone the repository containing the Unit 5 project.
 2. Open the project in your preferred IDE (such as IntelliJ IDEA or Eclipse).
-3. Navigate to `src/main/java/com/example/unit5/Unit5.java` and implement the required methods and attributes.
-4. Run the JUnit tests in `src/test/java/com/example/unit5/Unit5Test.java` to verify your implementations.
+3. Navigate to `Unit5.java` and implement the required methods and attributes.
+4. Run the JUnit tests in `Unit5Test.java` to verify your implementations.
 5. Ensure all tests pass before submitting your code.
 
 ## Submission
