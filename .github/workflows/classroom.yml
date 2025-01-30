@@ -1,0 +1,70 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: testDefaultConstructor
+      id: testdefaultconstructor
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testDefaultConstructor
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit5Test#testDefaultConstructor test
+        timeout: 3
+        max-score: 20
+    - name: testParameterizedConstructor
+      id: testparameterizedconstructor
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testParameterizedConstructor
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit5Test#testParameterizedConstructor test
+        timeout: 3
+        max-score: 20
+    - name: testSetters
+      id: testsetters
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testSetters
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit5Test#testSetters test
+        timeout: 3
+        max-score: 20
+    - name: testOverloadedConstructor
+      id: testoverloadedconstructor
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testOverloadedConstructor
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit5Test#testOverloadedConstructor test
+        timeout: 3
+        max-score: 15
+    - name: testToStringOverride
+      id: testtostringoverride
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testToStringOverride
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit5Test#testToStringOverride test
+        timeout: 3
+        max-score: 25
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TESTDEFAULTCONSTRUCTOR_RESULTS: "${{steps.testdefaultconstructor.outputs.result}}"
+        TESTPARAMETERIZEDCONSTRUCTOR_RESULTS: "${{steps.testparameterizedconstructor.outputs.result}}"
+        TESTSETTERS_RESULTS: "${{steps.testsetters.outputs.result}}"
+        TESTOVERLOADEDCONSTRUCTOR_RESULTS: "${{steps.testoverloadedconstructor.outputs.result}}"
+        TESTTOSTRINGOVERRIDE_RESULTS: "${{steps.testtostringoverride.outputs.result}}"
+      with:
+        runners: testdefaultconstructor,testparameterizedconstructor,testsetters,testoverloadedconstructor,testtostringoverride
