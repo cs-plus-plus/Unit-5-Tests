@@ -26,8 +26,8 @@ public class Unit5 {
      * Initializes 'name' and 'age' with the given values.
      * Increments the static 'count' variable.
      *
-     * @param name the name to set
-     * @param age the age to set
+     * @param name: the name to set
+     * @param age: the age to set
      */
     // TODO: Implement the parameterized constructor with parameters 'name' (String) and 'age' (int).
 
