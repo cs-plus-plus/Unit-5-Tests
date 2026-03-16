@@ -1,72 +1,96 @@
-# Unit 5 - Understanding Classes in Java
+# Unit 5: Writing Classes
+
+AP Computer Science A
 
 ## Overview
-In this unit, students will learn about creating and using classes in Java, a fundamental concept in object-oriented programming. The focus will be on defining classes, using constructors, method overloading, getters and setters, static attributes, static methods, and overriding methods. This unit will help students understand how objects interact within a program and the importance of encapsulation, data management, and class structure.
 
-## Learning Objectives
-- Understand the structure and components of a Java class.
-- Implement constructors, including default, parameterized, and overloaded versions.
-- Use getters and setters to access and modify private instance data.
-- Implement static variables and methods, and understand their use cases.
-- Override the `toString` method to provide meaningful string representations of objects.
-
-## Key Concepts
-- **Class**: Defines a type and is used to specify the blueprint of objects.
-- **Object**: An instance of a class that performs the actual work in a program.
-- **Constructor**: A special method used to initialize objects.
-- **Method Overloading**: Providing multiple methods with the same name but different parameters.
-- **Getters/Setters**: Methods used to access and modify private instance data.
-- **Static Attributes/Methods**: Shared among all instances of a class; belong to the class rather than any specific object.
-- **Method Overriding**: Customizing methods inherited from a superclass, particularly the `toString` method.
-
-## Common Mistakes
-- Forgetting to declare an object before calling its methods.
-- Omitting get/set methods for private instance variables.
-- Missing a constructor definition, leading to potential initialization errors.
-- Mismatch between the method definition and the method call in terms of name, number, type, order of arguments, and return type.
-- Forgetting to declare data types for each argument in a method definition.
-- Neglecting to use the return value of a method appropriately.
-
-## Assignment
-Students are required to complete the `Unit5.java` class by implementing all the necessary methods and attributes described in the JavaDoc comments. They will demonstrate their understanding by ensuring that all provided JUnit tests in `Unit5Test.java` pass successfully.
-
-## JUnit Tests Description and Points
-
-1. **Test Default Constructor and Static Count (20 points)**  
-   Verifies that the default constructor correctly initializes the `name` to "Unknown" and `age` to 0, and that the static `count` variable increments properly with each new object.
-
-2. **Test Parameterized Constructor and Getter Methods (20 points)**  
-   Ensures the parameterized constructor correctly sets the `name` and `age` fields based on input parameters. Also tests the getter methods to verify the correct retrieval of these values.
-
-3. **Test Setter Methods (20 points)**  
-   Tests the setter methods to ensure they correctly update the private instance variables `name` and `age`. Verifies that the updated values can be retrieved using the corresponding getter methods.
-
-4. **Test Overloaded Constructor (15 points)**  
-   Checks that the overloaded constructor initializes the `name` with the provided value and sets `age` to 0. Ensures correct handling of constructor overloading.
-
-5. **Test Overriding toString Method (25 points)**  
-   Verifies that the `toString` method is correctly overridden to return a string in the specified format: `"Unit5{name='nameValue', age=ageValue}"`. This test ensures proper string representation of the object.
+This project covers **Unit 5: Writing Classes** concepts including class design, constructors (default, parameterized, and overloaded), instance variables, getter/setter methods, static variables/methods, and the `toString()` override. Complete the `Unit5.java` class and run the provided JUnit tests to verify your work.
 
 ## Getting Started
-1. Clone the repository containing the Unit 5 project.
-2. Open the project in your preferred IDE (such as IntelliJ IDEA or Eclipse).
-3. Navigate to `Unit5.java` and implement the required methods and attributes.
-4. Run the JUnit tests in `Unit5Test.java` to verify your implementations.
-5. Ensure all tests pass before submitting your code.
 
-## Submission
-Submit your completed `Unit5.java` file through the course's designated submission platform by the due date. Ensure that all tests pass and your code adheres to the style guidelines provided in class.
+### Option 1: GitHub Codespaces (Recommended)
 
-## Resources
-- [Java Documentation](https://docs.oracle.com/javase/8/docs/api/)
-- [JUnit 5 User Guide](https://junit.org/junit5/docs/current/user-guide/)
-- [Object-Oriented Programming in Java](https://www.oracle.com/java/technologies/javase/learn/java-oop.html)
+1. Click the green **Code** button on this repository
+2. Select the **Codespaces** tab
+3. Click **Create codespace on main**
+4. Wait for the environment to build (~2 minutes the first time)
+5. Start coding in `src/main/java/unit5/Unit5.java`
 
-## Support
-If you encounter any issues or have questions about the assignment, please reach out during office hours or post in the course discussion forum.
+> **Note:** If the Java extension shows errors on first load, press `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows) and run **"Developer: Reload Window"**. This is a one-time setup step.
 
-For additional assistance, contact: **Kevin** at [kevin@csplusplus.com](mailto:kevin@csplusplus.com).
+### Option 2: Local Development
 
----
+1. Accept the assignment via the GitHub Classroom link
+2. Clone the repository using GitHub Desktop
+3. Open the project in your IDE (VS Code, IntelliJ, or Eclipse)
+4. **Requirements:** Java 17+, Maven 3.x
 
-**Unit 5 - Understanding Classes in Java** is part of the AP Computer Science A course, aimed at building a strong foundation in object-oriented programming and class design.
+## Running Tests
+
+### In VS Code / Codespaces
+
+Click the green play button next to any test method in `Unit5Test.java`, or open the **Testing** sidebar (beaker icon).
+
+### Command Line
+
+Run all tests:
+```
+mvn test
+```
+
+Run a single method's tests:
+```
+mvn -Dtest=Unit5Test#testDefaultConstructor test
+```
+
+## Scoring
+
+| # | Test | Points | Concepts |
+|---|------|--------|----------|
+| 1 | Default constructor & static count | 20 | Default constructor, `static` variables |
+| 2 | Parameterized constructor & getters | 20 | Parameterized constructor, getter methods |
+| 3 | Setter methods | 20 | `setName()`, `setAge()` |
+| 4 | Overloaded constructor | 15 | Constructor overloading, default values |
+| 5 | `toString()` override | 25 | Method overriding, String formatting |
+| | **Total** | **100** | |
+
+## What You Need to Implement
+
+In `Unit5.java`, implement:
+
+### Instance Variables
+- `private String name` — stores the person's name
+- `private int age` — stores the person's age
+
+### Static Variable
+- `private static int count` — tracks how many Unit5 objects have been created
+
+### Constructors
+1. **Default constructor** — sets name to "Unknown", age to 0, increments count
+2. **Parameterized constructor(String, int)** — sets both name and age, increments count
+3. **Overloaded constructor(String)** — sets name, age defaults to 0, increments count
+
+### Methods
+- `getName()` — returns the name
+- `setName(String name)` — updates the name
+- `getAge()` — returns the age
+- `setAge(int age)` — updates the age
+- `static getCount()` — returns the total count of objects created
+- `toString()` — returns `"Unit5{name='[name]', age=[age]}"`
+
+## Common Mistakes
+
+- Forgetting to declare instance variables as `private`
+- Not incrementing `count` in **every** constructor
+- Forgetting the `static` keyword on the count variable and getCount() method
+- Using `name` instead of `this.name` when the parameter has the same name
+- Incorrect toString format — must be exactly: `Unit5{name='John Doe', age=25}` with single quotes around the name
+- Declaring `count` as an instance variable instead of static (each object would have its own count)
+
+## Autograding
+
+Your code is automatically graded when you push to GitHub. Check the **Actions** tab to see your score. Each test is run independently — you earn points for each test you pass.
+
+## Contact
+
+For questions, contact [kevin@csplusplus.com](mailto:kevin@csplusplus.com)
